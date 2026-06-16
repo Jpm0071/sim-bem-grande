@@ -1,0 +1,133 @@
+:root {
+    --bg-color: #f0f2f5;
+    --cell-bg: #e4e6eb;
+    --cell-html: #ffffff;
+    --cell-css: #e6f2ff;
+    --primary: #007bff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+p {
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Modificado para 10 colunas e 5 linhas de 80px */
+#grid {
+    display: grid;
+    grid-template-columns: repeat(10, 80px);
+    grid-template-rows: repeat(5, 80px);
+    gap: 8px;
+    background: #bcc0c4;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cell {
+    background-color: var(--cell-bg);
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset -2px -2px 0px #b0b3b8, inset 2px 2px 0px #fff;
+}
+
+.cell:hover {
+    background-color: #4d4d4e;
+}
+
+/* Cor branca se for uma Tag HTML revelada */
+.cell.revealed-html {
+    background-color: var(--cell-html);
+    box-shadow: none;
+    border: 1px solid #ccd0d5;
+    color: #d36318; /* Cor padrão do HTML */
+    font-size: 12px;
+    word-break: break-all;
+}
+
+/* Cor azul clara se for uma Propriedade CSS revelada */
+.cell.revealed-css {
+    background-color: var(--cell-css);
+    box-shadow: none;
+    border: 1px solid #b8daff;
+    color: #5168c4; /* Cor padrão do CSS */
+    font-size: 11px;
+    word-break: break-all;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 85%;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal h2 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.modal p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.5;
+}
+
+.close-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.close-btn:hover {
+    background: #0056b3;
+}
